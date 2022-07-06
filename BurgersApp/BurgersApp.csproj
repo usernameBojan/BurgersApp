@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BurgersApp.Application\BurgersApp.Application.csproj" />
+    <ProjectReference Include="..\BurgersApp.Db\BurgersApp.Db.csproj" />
+    <ProjectReference Include="..\BurgersApp.EntityFramework\BurgersApp.EntityFramework.csproj" />
+  </ItemGroup>
+
+</Project>

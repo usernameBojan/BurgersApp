@@ -1,0 +1,47 @@
+﻿@using BurgersApp.Application.ViewModel.Home
+@model HomeViewModel;
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Pseudo Burgers</h1>
+    <p>Make an online order, check out our menu, or find out more about our locations.</p>
+</div>
+
+<div class="statistics-section">
+    <div class="container home-sections best-seller mb-lg-5">
+        <h5>Our best selling burger</h5>
+        <p>cool</p>
+        <p>hufshfs</p>
+        <p>qwqqqqqqqqqq</p>
+    </div>
+
+    <div class="container home-sections orders-served mb-lg-5">
+        <h5>Orders served so far</h5>
+        <p><strong>9001</strong> and counting</p>
+    </div>
+</div>
+
+<div class="container home-sections locations mb-lg-5">
+    <h5 class="mb-4">Where can you find us?</h5>
+    @foreach(var location in Model.Location)
+    {
+        <div class="container mb-3">
+            <p><strong>@location.Name</strong></p>
+            <p>Address: @location.Address</p>
+            <p><em>Working hours: @location.WorkingDaysAndHours</em></p>
+        </div>
+        <a asp-controller="Home" asp-action="EditLocation" asp-route-id="@location.Id" class="btn btn-secondary active" role="button" aria-pressed="true">
+                 Edit Location
+        </a>
+        <a asp-controller="Home" asp-action="DeleteLocation" asp-route-id="@location.Id" class="btn btn-danger active" role="button" aria-pressed="true">
+                 Delete Location
+       </a>
+    }
+
+    <a asp-controller="Home" asp-action="CreateLocation" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">
+                    Add new location
+    </a>
+</div>

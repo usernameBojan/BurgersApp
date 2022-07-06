@@ -1,0 +1,28 @@
+﻿.menu-container {
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: center;
+   margin-top: 50px;
+}
+
+#menu-title {
+    text-align: center;
+    margin: 25px auto;
+}
+
+.burger-container {
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 5px;
+    height: 75%;
+    background-color: whitesmoke;
+}
+
+.burger-container a {
+    margin-top: 25px;
+    bottom: 0;
+}
+.hidden {
+    display: none;
+}

@@ -1,0 +1,29 @@
+﻿@using BurgersApp.Application.ViewModel.Location
+
+@model CreateLocationViewModel
+
+<form asp-controller="Home" asp-action="CreateLocation" method="post">
+    <div class="mb-3"> 
+        <label class="form-label">Name</label>
+        <input asp-for=Name type="text" class="form-control"/>
+    </div>
+
+    <div class="mb-3">
+       <label class="form-label">Address</label>
+       <input asp-for=Address type="text" class="form-control"/>
+    </div>
+    
+    <div class="mb-3">
+           <label class="form-label">Opens at:</label>
+           <input asp-for=Opens type="text" class="form-control"/>
+    </div>
+
+    <div class="mb-3">
+           <label class="form-label">Closes at:</label>
+           <input asp-for=Closes type="text" class="form-control"/>
+    </div>
+                      
+    <div class="mb-3">
+        <button type="submit" class="btn btn-secondary">Submit</button>
+    </div>
+</form>

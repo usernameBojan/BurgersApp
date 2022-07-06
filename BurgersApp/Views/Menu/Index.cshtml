@@ -1,0 +1,132 @@
+﻿@using BurgersApp.Application.ViewModel.Burgers
+@model IEnumerable<BurgerViewModel>
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<h3 id="menu-title">PseudoBurgers Menu</h3>
+
+<button type="button" class="container btn btn-lg btn-outline-secondary mb-4">Show all burgers</button>
+<button type="button" class="container btn btn-lg btn-outline-secondary mb-4">Show regular burgers</button>
+<button type="button" class="container btn btn-lg btn-outline-secondary mb-4">Show vegetarian burgers</button>
+<button type="button" class="container btn btn-lg btn-outline-secondary mb-4">Show vegan burgers</button>
+
+<div class="menu-container all-burgers hidden">
+    @foreach(var burger in Model)
+    {
+        <div class="burger-container">
+             <div class="mb-3"> 
+                <h5 class="mb-3">@burger.Name</h5>
+                <p><em><strong>Category: @burger.Category ~ Price: @burger.Price</strong></em></p>
+             </div>
+             <hr>
+             <div class="mb-3">
+                <p>Ingredients:</p>
+                @foreach(string ingredient in burger.Indgredients)
+                {
+                    <p>@ingredient</p>
+                }
+             </div>
+             <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
+                 Edit
+             </a>
+             <a asp-controller="Menu" asp-action="Delete" asp-route-id="@burger.Id" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">
+                 Delete
+             </a>
+        </div>
+    }
+</div>
+
+<div class="menu-container regular-burgers hidden">
+    @foreach(var burger in Model)
+    {
+        if(!burger.IsVegetarian && !burger.IsVegan)
+        {
+         <div class="burger-container">
+             <div class="mb-3"> 
+                <h5 class="mb-3">@burger.Name</h5>
+                <p><em><strong>Category: @burger.Category ~ Price: @burger.Price</strong></em></p>
+             </div>
+             <hr>
+             <div class="mb-3">
+                <p>Ingredients:</p>
+                @foreach(string ingredient in burger.Indgredients)
+                {
+                    <p>@ingredient</p>
+                }
+             </div>
+             <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
+                 Edit
+             </a>
+             <a asp-controller="Menu" asp-action="Delete" asp-route-id="@burger.Id" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">
+                 Delete
+             </a>
+         </div>
+        }
+    }
+</div>
+
+<div class="menu-container vegetarian-burgers hidden">
+    @foreach(var burger in Model)
+    {
+        if((burger.IsVegetarian) || (burger.IsVegan))
+        {
+         <div class="burger-container">
+             <div class="mb-3"> 
+                <h5 class="mb-3">@burger.Name</h5>
+                <p><em><strong>Category: @burger.Category ~ Price: @burger.Price</strong></em></p>
+             </div>
+             <hr>
+             <div class="mb-3">
+                <p>Ingredients:</p>
+                @foreach(string ingredient in burger.Indgredients)
+                {
+                    <p>@ingredient</p>
+                }
+             </div>
+             <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
+                 Edit
+             </a>
+             <a asp-controller="Menu" asp-action="Delete" asp-route-id="@burger.Id" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">
+                 Delete
+             </a>
+         </div>
+        }
+    }
+</div>
+
+<div class="menu-container vegan-burgers hidden">
+    @foreach(var burger in Model)
+    {
+        if(burger.IsVegan)
+        {
+         <div class="burger-container">
+             <div class="mb-3"> 
+                <h5 class="mb-3">@burger.Name</h5>
+                <p><em><strong>Category: @burger.Category ~ Price: @burger.Price</strong></em></p>
+             </div>
+             <hr>
+             <div class="mb-3">
+                <p>Ingredients:</p>
+                @foreach(string ingredient in burger.Indgredients)
+                {
+                    <p>@ingredient</p>
+                }
+             </div>
+             <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
+                 Edit
+             </a>
+             <a asp-controller="Menu" asp-action="Delete" asp-route-id="@burger.Id" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">
+                 Delete
+             </a>
+
+         </div>
+        }
+    }
+</div>
+
+<a asp-controller="Menu" asp-action="Create" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">
+                    Create new burger
+</a>
+
+<script src=~/js/menu.js></script>

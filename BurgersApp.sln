@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BurgersApp", "BurgersApp\BurgersApp.csproj", "{A98474EA-4961-4853-B109-14C7AC0F71EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BurgersApp.Domain", "BurgersApp.Domain\BurgersApp.Domain.csproj", "{675117FE-52D7-45DE-ABC4-0C56D697A77D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BurgersApp.Db", "BurgersApp.Db\BurgersApp.Db.csproj", "{0FEE1AAF-6969-4A79-A1F2-1DC33F714E94}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BurgersApp.Application", "BurgersApp.Application\BurgersApp.Application.csproj", "{CF611805-48F9-4268-9151-FE1CC4C4E92C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurgersApp.EntityFramework", "BurgersApp.EntityFramework\BurgersApp.EntityFramework.csproj", "{F000CC01-0D53-45BD-B4CB-1EAB995D3A58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A98474EA-4961-4853-B109-14C7AC0F71EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98474EA-4961-4853-B109-14C7AC0F71EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98474EA-4961-4853-B109-14C7AC0F71EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98474EA-4961-4853-B109-14C7AC0F71EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{675117FE-52D7-45DE-ABC4-0C56D697A77D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{675117FE-52D7-45DE-ABC4-0C56D697A77D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{675117FE-52D7-45DE-ABC4-0C56D697A77D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{675117FE-52D7-45DE-ABC4-0C56D697A77D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FEE1AAF-6969-4A79-A1F2-1DC33F714E94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FEE1AAF-6969-4A79-A1F2-1DC33F714E94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FEE1AAF-6969-4A79-A1F2-1DC33F714E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FEE1AAF-6969-4A79-A1F2-1DC33F714E94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF611805-48F9-4268-9151-FE1CC4C4E92C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF611805-48F9-4268-9151-FE1CC4C4E92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF611805-48F9-4268-9151-FE1CC4C4E92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF611805-48F9-4268-9151-FE1CC4C4E92C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F000CC01-0D53-45BD-B4CB-1EAB995D3A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F000CC01-0D53-45BD-B4CB-1EAB995D3A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F000CC01-0D53-45BD-B4CB-1EAB995D3A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F000CC01-0D53-45BD-B4CB-1EAB995D3A58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B23DFF48-70C0-400A-840E-164EC663ADC3}
+	EndGlobalSection
+EndGlobal

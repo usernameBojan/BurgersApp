@@ -1,0 +1,27 @@
+﻿@using BurgersApp.Application.ViewModel.Burgers
+
+@model CreateBurgerViewModel
+
+<form asp-controller="Menu" asp-action="Create" method="post">
+    <div class="mb-3"> 
+        <label class="form-label">Name</label>
+        <input asp-for=Name type="text" class="form-control"/>
+    </div>
+
+    <div class="mb-3">
+       <label class="form-label">Price</label>
+       <input asp-for=Price type="number" class="form-control"/>
+    </div>
+    
+    <div class="mb-3">
+       @for(int i=0; i<5; i++)
+       {
+           <label class="form-label">Enter ingredient</label>
+           <input asp-for=Indgredients type="text" class="form-control"/>
+       }
+    </div>
+                      
+    <div class="mb-3">
+        <button type="submit" class="btn btn-secondary">Submit</button>
+    </div>
+</form>

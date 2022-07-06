@@ -1,0 +1,66 @@
+@media (min-width: 600px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+nav {
+    background-color: whitesmoke;
+}
+
+header {
+    font-size: x-large;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    background-color: whitesmoke;
+}
+
+header li {
+    padding: 1px;
+    margin: 1px 25px;
+    border-radius: 12.5px;
+    border: 1px solid grey;
+    background-color: whitesmoke;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: bisque;
+}
+
+footer {
+    background-color: whitesmoke;
+    position: fixed;
+}
+
+footer a {
+    text-decoration: none;
+    padding-left: 500px;
+}
+
+.home-sections {
+    background-color: whitesmoke;
+    border: 1px solid grey;
+    border-radius: 12.5px;
+    display: flex;
+    flex-flow: column wrap;
+    width: 55%;
+    padding: 10px;
+}
+
+.statistics-section{
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 25px;
+    padding: 50px;
+}
+
+.statistics-section div {
+    width: 35%;
+}

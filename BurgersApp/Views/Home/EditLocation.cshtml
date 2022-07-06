@@ -1,0 +1,27 @@
+﻿@using BurgersApp.Application.ViewModel.Location
+
+@model LocationViewModel
+
+
+<form asp-controller="Home" asp-action="EditLocation" asp-route-id="@Model.Id" method="post">
+    <label asp-for="Name">
+    </label>
+    <input asp-for="Name" />
+
+    <label asp-for="Address">
+    </label>
+    <input asp-for="Address"/>
+
+    <label asp-for="Opens">
+    </label>
+    <input asp-for="Opens"/>
+
+    <label asp-for="Closes">
+    </label>
+    <input asp-for="Closes"/>
+    
+
+    <button btn btn-lg-secondary>
+        Submit
+    </button>
+</form>
