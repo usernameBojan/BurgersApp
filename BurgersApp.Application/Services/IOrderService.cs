@@ -9,6 +9,6 @@ namespace BurgersApp.Application.Services
 {
     public interface IOrderService
     {
-        
+        OrderViewModel CreateOrder(CreateOrderViewModel create); 
     }
 }

@@ -12,27 +12,33 @@ namespace BurgersApp.Domain.Models
         {
 
         }
-        public Order(string firstName, string lastName, string address, ICollection<Burger> burgers, Location location)
+        public Order(string firstName, string lastName, string address, ICollection<Burger> burgers, Location location, bool isDelievered)
         {
-            FullName = $"{firstName} + {lastName}";
+            FirstName = firstName;
+            LastName = lastName;
             Address = address;
             Burgers = burgers;
             Location = location;
+            IsDelievered = isDelievered;
         }
-        public Order(int id, string firstName, string lastName, string address, ICollection<Burger> burgers, Location location)
+        public Order(int id, string firstName, string lastName, string address, ICollection<Burger> burgers, Location location, bool isDelievered)
         {
             Id = id;
-            FullName = $"{firstName} + {lastName}";
+            FirstName = firstName;
+            LastName = lastName;
             Address = address;
             Burgers = burgers;
             Location = location;
+            IsDelievered = isDelievered;
         }
 
         public int Id { get; set; }
 
-        public string FullName { get; set; }
-
+        public string FullName => $"{FirstName} + {LastName}";
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Address { get; set; }
+        public bool IsDelievered { get; set; }
 
         public ICollection<Burger> Burgers { get; set; }
 
@@ -46,7 +52,7 @@ namespace BurgersApp.Domain.Models
         public void AddBurger(Burger? burger, int numOfBurgers)
         {
             if (burger == null)
-                throw new Exception("Pizza doesn't exist");
+                throw new Exception("Burger doesn't exist");
 
             Enumerable.Range(0, numOfBurgers).ToList().ForEach(_ =>
             {
