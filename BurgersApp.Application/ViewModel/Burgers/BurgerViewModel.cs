@@ -1,4 +1,5 @@
 ﻿using BurgersApp.Domain.Enums;
+using BurgersApp.Domain.Models;
 
 namespace BurgersApp.Application.ViewModel.Burgers
 {
@@ -6,7 +7,7 @@ namespace BurgersApp.Application.ViewModel.Burgers
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<string>? Indgredients { get; set; }
+        public List<Ingredients>? Ingredients { get; set; }
         public int Price { get; set; }
         public bool IsVegetarian { get; set; }
         public bool IsVegan { get; set; }

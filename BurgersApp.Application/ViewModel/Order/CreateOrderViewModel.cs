@@ -11,7 +11,7 @@ namespace BurgersApp.Application.ViewModel.Order
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
-        public ICollection<SelectBurger> Burgers { get; set; } = new List<SelectBurger>();
+        public IList<SelectBurger> Burgers { get; set; } = new List<SelectBurger>();
         public int LocationId { get; set; }
     }
 

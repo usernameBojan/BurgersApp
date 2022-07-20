@@ -12,7 +12,7 @@ namespace BurgersApp.Application.Mapper
                 Id = burger.Id,
                 Name = burger.Name,
                 Price = burger.Price,
-                Indgredients = burger.Indgredients,
+                Ingredients = burger.Ingredients,
                 IsVegetarian = burger.IsVegetarian,
                 IsVegan = burger.IsVegan,
                 Category = burger.Category,
@@ -22,14 +22,14 @@ namespace BurgersApp.Application.Mapper
 
         public static Burger ToBurger(this CreateBurgerViewModel create)
         {
-            return new Burger(create.Name, create.Price, create.IsVegetarian, create.IsVegan, create.Indgredients);    
+            return new Burger(create.Name, create.Price, create.IsVegetarian, create.IsVegan, create.Ingredients);    
         }
 
         public static Burger Edit(this Burger burger, BurgerViewModel model)
         {
             burger.Name = model.Name;
             burger.Price = model.Price;
-            //burger.Indgredients = model.Indgredients;
+            burger.Ingredients = model.Ingredients;
 
             return burger;
         }

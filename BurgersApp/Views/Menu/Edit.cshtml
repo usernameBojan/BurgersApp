@@ -16,11 +16,11 @@
     </label>
     <input type="number" asp-for="Price"/>
     <br />
-    @foreach(var ingr in Model.Indgredients)
+    @foreach(var ingredient in Model.Ingredients)
     {
-         <label asp-for="Indgredients">
+         <label asp-for="@ingredient.Name">
         </label>
-        <input asp-for="@ingr"/> <br />
+        <input asp-for="@ingredient.Name"/> <br />
     }
 
     <button btn btn-lg-secondary>

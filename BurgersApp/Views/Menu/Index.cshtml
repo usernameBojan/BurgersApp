@@ -22,9 +22,9 @@
              <hr>
              <div class="mb-3">
                 <p>Ingredients:</p>
-                @foreach(string ingredient in burger.Indgredients)
+                @foreach(var ingredient in burger.Ingredients)
                 {
-                    <p>@ingredient</p>
+                    <p>@ingredient.Name</p>
                 }
              </div>
              <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
@@ -50,9 +50,9 @@
              <hr>
              <div class="mb-3">
                 <p>Ingredients:</p>
-                @foreach(string ingredient in burger.Indgredients)
+                @foreach(var ingredient in burger.Ingredients)
                 {
-                    <p>@ingredient</p>
+                    <p>@ingredient.Name</p>
                 }
              </div>
              <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
@@ -79,9 +79,9 @@
              <hr>
              <div class="mb-3">
                 <p>Ingredients:</p>
-                @foreach(string ingredient in burger.Indgredients)
+                @foreach(var ingredient in burger.Ingredients)
                 {
-                    <p>@ingredient</p>
+                    <p>@ingredient.Name</p>
                 }
              </div>
              <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
@@ -108,9 +108,9 @@
              <hr>
              <div class="mb-3">
                 <p>Ingredients:</p>
-                @foreach(string ingredient in burger.Indgredients)
+                @foreach(var ingredient in burger.Ingredients)
                 {
-                    <p>@ingredient</p>
+                    <p>@ingredient.Name</p>
                 }
              </div>
              <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">

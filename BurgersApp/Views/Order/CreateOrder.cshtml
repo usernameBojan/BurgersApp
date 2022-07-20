@@ -1,1 +1,33 @@
-﻿
+﻿@model CreateOrderModel;
+
+<form asp-action="CreateOrder" method="post">
+    <label asp-for="Form.FirstName">
+    </label>
+    <input asp-for="Form.FirstName"/>
+
+    <label asp-for="Form.LastName">
+    </label>
+    <input asp-for="Form.LastName"/>
+
+    <label asp-for="Form.Address">
+    </label>
+    <input asp-for="Form.Address"/>
+
+    <label asp-for="Form.LocationId">
+    </label>
+
+    <select asp-for="Form.LocationId" asp-items="Model.Location">
+                
+    </select>
+
+    @for(int i=0; i<Model.Form.Burgers.Count(); i++)
+    {
+        <input type="hidden" asp-for="Form.Burgers[i].BurgerId"/>
+        <label asp-for="Form.Burgers[i].IsSelected">
+            @Model.Form.Burgers[i].BurgerName
+        </label>
+        <input type="checkbox" asp-for="Form.Burgers[i].IsSelected"/>
+    }
+
+    <button>Submit</button>
+</form>

@@ -16,7 +16,6 @@ namespace BurgersApp.EntityFramework
         }
         public DbSet<Burger> Burgers { get; set; }
         public DbSet<Location> Locations { get; set; }
-
-
+        public DbSet<Order> Orders { get; set; }
     }
 }

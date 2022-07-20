@@ -46,6 +46,26 @@ namespace BurgersApp.Application.Services.Implementation
             return created.ToOrderViewModel();
 
         }
+        public List<SelectBurger> GetOrderableBurgers()
+        {
+            return burgerRepository.GetAll().Select(x => new SelectBurger
+            {
+                BurgerId = x.Id,
+                BurgerName = x.Name,
+                IsSelected = false
+            }
+            ).ToList();
+        }
+        public OrderViewModel GetOrder(int id)
+        {
+            var order = orderRepository.GetById(id);
+            if (order == null)
+            {
+                throw new Exception("Not found");
+            }
+
+            return order.ToOrderViewModel();
+        }
     }
 
 
