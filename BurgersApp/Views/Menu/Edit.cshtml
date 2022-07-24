@@ -11,17 +11,15 @@
     <label asp-for="Name">
     </label>
     <input asp-for="Name" />
-
+    <br />
     <label asp-for="Price">
     </label>
     <input type="number" asp-for="Price"/>
     <br />
-    @foreach(var ingredient in Model.Ingredients)
-    {
-         <label asp-for="@ingredient.Name">
-        </label>
-        <input asp-for="@ingredient.Name"/> <br />
-    }
+    <label asp-for="Ingredients">
+    </label>
+    <textarea asp-for="Ingredients" rows="5" cols="30">
+    </textarea>
 
     <button btn btn-lg-secondary>
         Submit

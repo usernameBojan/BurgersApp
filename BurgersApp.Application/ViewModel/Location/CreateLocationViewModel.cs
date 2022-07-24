@@ -13,6 +13,5 @@ namespace BurgersApp.Application.ViewModel.Location
         public string Opens { get; set; }
         public string Closes { get; set; }
         public string WorkingDaysAndHours { get; set; }
-        public bool ProlongedWeeknight { get; set; }
     }
 }

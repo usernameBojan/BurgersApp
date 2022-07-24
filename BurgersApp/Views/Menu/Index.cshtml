@@ -22,10 +22,11 @@
              <hr>
              <div class="mb-3">
                 <p>Ingredients:</p>
-                @foreach(var ingredient in burger.Ingredients)
-                {
-                    <p>@ingredient.Name</p>
-                }
+                
+                    <p>@burger.Ingredients</p>
+             </div>
+             <div class="img-div">
+                 <img src=@burger.ImgSrc width="450" height="250"> 
              </div>
              <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
                  Edit
@@ -50,10 +51,10 @@
              <hr>
              <div class="mb-3">
                 <p>Ingredients:</p>
-                @foreach(var ingredient in burger.Ingredients)
-                {
-                    <p>@ingredient.Name</p>
-                }
+                    <p>@burger.Ingredients</p>
+             </div>
+             <div class="img-div">
+                 <img src=@burger.ImgSrc width="450" height="250"> 
              </div>
              <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
                  Edit
@@ -79,10 +80,11 @@
              <hr>
              <div class="mb-3">
                 <p>Ingredients:</p>
-                @foreach(var ingredient in burger.Ingredients)
-                {
-                    <p>@ingredient.Name</p>
-                }
+                
+                    <p>@burger.Ingredients</p>
+             </div>
+             <div class="img-div">
+                 <img src=@burger.ImgSrc width="450" height="250"> 
              </div>
              <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
                  Edit
@@ -108,10 +110,11 @@
              <hr>
              <div class="mb-3">
                 <p>Ingredients:</p>
-                @foreach(var ingredient in burger.Ingredients)
-                {
-                    <p>@ingredient.Name</p>
-                }
+                
+                    <p>@burger.Ingredients</p>
+             </div>
+             <div class="img-div">
+                 <img src=@burger.ImgSrc width="450" height="250"> 
              </div>
              <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
                  Edit

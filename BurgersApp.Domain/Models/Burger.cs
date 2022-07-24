@@ -14,11 +14,12 @@ namespace BurgersApp.Domain.Models
 
         }
 
-        public Burger(string name, int price, bool isVegetarian, bool isVegan, List<Ingredients> ingredients)
+        public Burger(string name, int price, bool isVegetarian, bool isVegan, string ingredients, string img)
         {
             Name = name;
             Price = price;
             Ingredients = ingredients;
+            ImgSrc = img;
             IsVegetarian = isVegetarian;
             IsVegan = isVegan;
 
@@ -33,11 +34,12 @@ namespace BurgersApp.Domain.Models
             else Category = Categories.Regular;
         }
 
-        public Burger(int id, string name, int price, bool isVegetarian, bool isVegan, bool hasFries, Categories categories, List<Ingredients> ingredients)
+        public Burger(int id, string name, int price, bool isVegetarian, bool isVegan, bool hasFries, Categories categories, string ingredients, string img)
         {
             Id = id;
             Name = name;
             Ingredients = ingredients;
+            ImgSrc = img;
             Price = price;
             IsVegetarian = isVegetarian;
             IsVegan = isVegan;
@@ -52,7 +54,8 @@ namespace BurgersApp.Domain.Models
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Ingredients> Ingredients { get; set; }
+        public string Ingredients { get; set; }
+        public string ImgSrc { get; set; }
         public int Price { get; set; }
         public bool IsVegetarian { get; set; }
         public bool IsVegan { get; set; }

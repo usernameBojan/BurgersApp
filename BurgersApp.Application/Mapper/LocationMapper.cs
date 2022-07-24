@@ -20,14 +20,15 @@ namespace BurgersApp.Application.Mapper
 
         public static Location ToLocation(this CreateLocationViewModel create)
         {
-            return new Location(create.Name, create.Address, create.Opens, create.Closes, create.ProlongedWeeknight);
+            return new Location(create.Name, create.Address, create.Opens, create.Closes);
         }
 
         public static Location Edit(this Location location, LocationViewModel model)
         {
             location.Name = model.Name;
             location.Address = model.Address;
-            location.WorkingDaysAndHours = $"Monday - Saturday: {model.Opens} - {model.Closes}";
+            location.OpensAt = model.Opens;
+            location.ClosesAt = model.Closes;
             return location;
         }
     }

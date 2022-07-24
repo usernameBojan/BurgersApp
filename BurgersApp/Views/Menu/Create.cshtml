@@ -14,11 +14,9 @@
     </div>
     
     <div class="mb-3">
-       @for(int i=0; i<5; i++)
-       {
-           <label class="form-label" asp-for=Ingredients></label>
-           <input asp-for=Ingredients type="text" class="form-control"/>
-       }
+       <label class="form-label" asp-for=Ingredients></label>
+       <textarea asp-for="Ingredients" rows="5" cols="30" class="form-control">
+       </textarea>
     </div>
                       
     <div class="mb-3">

@@ -12,39 +12,25 @@ namespace BurgersApp.Domain.Models
         {
 
         }
-        public Location(string name, string address, string opens, string closes, bool isWeeknightProlonged)
+        public Location(string name, string address, string opens, string closes)
         {
             Name = name;
             Address = address;
             OpensAt = opens;
-            ClosesAt = closes;
-            WorkingDaysAndHours = $"Monday - Saturday \n {opens} - {closes}";
-            IsWeeknightProlonged = isWeeknightProlonged;
-
-            if (isWeeknightProlonged)
-            {
-                WorkingDaysAndHours = $"Monday - Thursday \n {opens} - {closes} \n Friday: 10:00 - 06:00 \n Saturday: 12:00 - 06:00";
-            }
+            ClosesAt = closes;           
         }
-        public Location(int id, string name, string address, string opens, string closes, bool isWeeknightProlonged)
+        public Location(int id, string name, string address, string opens, string closes)
         {
             Id = id;
             Name = name;
             Address = address;
             OpensAt = opens;
-            ClosesAt = closes;
-            WorkingDaysAndHours = $"Monday - Saturday \n {opens} - {closes}";
-            IsWeeknightProlonged = isWeeknightProlonged;
-
-            if (isWeeknightProlonged)
-            {
-                WorkingDaysAndHours = $"Monday - Thursday \n {opens} - {closes} \n Friday: 10:00 - 06:00 \n Saturday: 12:00 - 06:00";
-            }
+            ClosesAt = closes;   
         }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public string WorkingDaysAndHours { get; set; }
+        public string WorkingDaysAndHours => $"Monday - Saturday \n {OpensAt} - {ClosesAt}";
         public string OpensAt { get; set; }
         public string ClosesAt { get; set; }
         public bool IsWeeknightProlonged { get; set; }  
