@@ -1,0 +1,24 @@
+﻿@using BurgersApp.Application.Dto.Order;
+@model OrderDto;
+
+<div class="order-log-container container">
+    <h6>Order details</h6>
+    <p>Order Id: @Model.Id</p>
+    <p>Customer name: @Model.FullName</p>
+    <p>Customer Address: @Model.Address</p>
+    <p>Order Price: @Model.TotalPrice</p>
+    <p>Store: @Model.Location.Name, @Model.Location.Address</p>
+    <br/>
+
+    <h6>Burgers:</h6>
+    
+    @foreach(var burger in Model.Burgers)
+    {
+        <div>
+            <p>Burger: @burger.BurgerName, Price: @burger.BurgerPrice</p>
+            <p>Quantity: @burger.Quantity</p>
+            <p>Full price: @burger.BatchOrderBurgerPrice</p>
+        </div>
+    }
+    
+</div>

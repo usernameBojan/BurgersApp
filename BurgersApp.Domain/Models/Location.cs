@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BurgersApp.Domain.Models
+﻿namespace BurgersApp.Domain.Models
 {
     public class Location : IEntity
     {
@@ -28,12 +22,10 @@ namespace BurgersApp.Domain.Models
             ClosesAt = closes;   
         }
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Address { get; set; } = string.Empty;
         public string WorkingDaysAndHours => $"Monday - Saturday \n {OpensAt} - {ClosesAt}";
-        public string OpensAt { get; set; }
-        public string ClosesAt { get; set; }
-        public bool IsWeeknightProlonged { get; set; }  
+        public string OpensAt { get; set; } = string.Empty;
+        public string ClosesAt { get; set; } = string.Empty;
     }
 }
- 

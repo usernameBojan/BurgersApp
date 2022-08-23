@@ -1,6 +1,6 @@
-﻿@using BurgersApp.Application.ViewModel.Location
+﻿@using BurgersApp.Application.Dto.Location
 
-@model CreateLocationViewModel
+@model CreateLocationDto
 
 <form asp-controller="Home" asp-action="CreateLocation" method="post">
     <div class="mb-3"> 
@@ -24,6 +24,6 @@
     </div>
                       
     <div class="mb-3">
-        <button type="submit" class="btn btn-secondary">Submit</button>
+        <button type="submit" class="btn btn-lg bg-primary">Submit</button>
     </div>
 </form>

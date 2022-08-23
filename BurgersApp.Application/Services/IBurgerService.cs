@@ -1,14 +1,14 @@
-﻿using BurgersApp.Application.ViewModel.Burgers;
+﻿using BurgersApp.Application.Dto.Burgers;
 
 
 namespace BurgersApp.Application.Services
 {
     public interface IBurgerService
     {
-        IList<BurgerViewModel> GetAllBurgers();
-        BurgerViewModel GetBurger(int id);
-        BurgerViewModel CreateBurger(CreateBurgerViewModel model);
-        BurgerViewModel EditBurger(BurgerViewModel model, int id);
+        IList<BurgerDto> GetAllBurgers();
+        BurgerDto GetBurger(int id);
+        BurgerDto CreateBurger(CreateBurgerDto model);
+        BurgerDto EditBurger(BurgerDto model, int id);
         void Delete(int id);
     }
 }

@@ -1,10 +1,5 @@
 ﻿using BurgersApp.Application.Repository;
 using BurgersApp.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BurgersApp.Db.Repository
 {
@@ -21,18 +16,15 @@ namespace BurgersApp.Db.Repository
             IntDb.Burgers.Add(entity);
             return entity;
         }
-
         public void Delete(int id)
         {
             var burger = GetById(id);
             IntDb.Burgers.Remove(burger);
         }
-
         public void DeleteAll()
         {
             IntDb.Burgers.Clear();
         }
-
         public IQueryable<Burger> GetAll()
         {
             return IntDb.Burgers.AsQueryable();

@@ -1,23 +1,14 @@
-﻿using BurgersApp.Application.ViewModel.Home;
-using BurgersApp.Application.ViewModel.Location;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BurgersApp.Application.Dto.Home;
+using BurgersApp.Application.Dto.Location;
 
 namespace BurgersApp.Application.Services
 {
     public interface ILocationService
     {
-        IList<LocationViewModel> GetAllLocations();
-
-        LocationViewModel GetLocation(int id);
-
-        LocationViewModel CreateLocation(CreateLocationViewModel model);
-
-        LocationViewModel EditLocation(LocationViewModel model, int id);
-
+        IList<LocationDto> GetAllLocations();
+        LocationDto GetLocation(int id);
+        LocationDto CreateLocation(CreateLocationDto model);
+        LocationDto EditLocation(LocationDto model, int id);
         void Delete(int id);
     }
 }

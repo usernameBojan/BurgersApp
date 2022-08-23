@@ -1,5 +1,5 @@
 ﻿using BurgersApp.Application.Services;
-using BurgersApp.Application.ViewModel.Order;
+using BurgersApp.Application.Dto.Order;
 using BurgersApp.Db;
 using BurgersApp.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -17,17 +17,12 @@ namespace BurgersApp.Controllers
             this.locationService = locationService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult CreateOrder()
-        {
-            var orderModel = new CreateOrderModel
+            var orderModel = new CreateOrderViewModel
             {
-                Form = new CreateOrderViewModel { Burgers = orderService.GetOrderableBurgers() },
+                Form = new CreateOrderDto { Burgers = orderService.GetOrderableBurgers() },
                 Location = locationService.GetAllLocations().Select(x => new SelectListItem
                 {
                     Text = x.Name,
@@ -38,12 +33,26 @@ namespace BurgersApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateOrder(CreateOrderModel order)
+        public IActionResult ConfirmOrder(CreateOrderViewModel order)
         {
-            orderService.CreateOrder(order.Form);
-            return RedirectToAction("Index");
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            var confirm = orderService.CreateOrder(order.Form);
+            return View(confirm);
+        }
+        public IActionResult ServedOrders()
+        {
+            var active = orderService.GetOrders();
+            return View(active);
+        }
+
+        [HttpGet("Order/OrderLog/{id}")]
+        public IActionResult OrderLog(int id)
+        {
+            var order = orderService.GetOrder(id);
+            return View(order);
         }
     }
-    
 }
-

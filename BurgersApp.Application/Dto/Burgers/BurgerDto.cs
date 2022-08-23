@@ -1,14 +1,13 @@
 ﻿using BurgersApp.Domain.Enums;
-using BurgersApp.Domain.Models;
 
-namespace BurgersApp.Application.ViewModel.Burgers
+namespace BurgersApp.Application.Dto.Burgers
 {
-    public class BurgerViewModel
+    public class BurgerDto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Ingredients { get; set; }
-        public string ImgSrc { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Ingredients { get; set; } = string.Empty;
+        public string ImgSrc { get; set; } = string.Empty;
         public int Price { get; set; }
         public bool IsVegetarian { get; set; }
         public bool IsVegan { get; set; }

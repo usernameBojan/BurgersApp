@@ -1,6 +1,6 @@
 ﻿using BurgersApp.Application.Mapper;
 using BurgersApp.Application.Repository;
-using BurgersApp.Application.ViewModel.Burgers;
+using BurgersApp.Application.Dto.Burgers;
 using BurgersApp.Domain.Models;
 
 namespace BurgersApp.Application.Services.Implementation
@@ -12,21 +12,18 @@ namespace BurgersApp.Application.Services.Implementation
         {
             this.repository = repository;
         }
-
-        public BurgerViewModel CreateBurger(CreateBurgerViewModel model)
+        public BurgerDto CreateBurger(CreateBurgerDto dto)
         {
-            var burger = model.ToBurger();
+            var burger = dto.ToBurger();
 
-            var newItem = repository.Create(burger);
-            return newItem.ToBurgerViewModel();
+            var created = repository.Create(burger);
+            return created.ToBurgerDto();
         }
-
         public void Delete(int id)
         {
             repository.Delete(id);
         }
-
-        public BurgerViewModel EditBurger(BurgerViewModel model, int id)
+        public BurgerDto EditBurger(BurgerDto model, int id)
         {
             var burger = repository.GetById(id);
 
@@ -38,15 +35,16 @@ namespace BurgersApp.Application.Services.Implementation
 
             repository.Update(toSave);
 
-            return toSave.ToBurgerViewModel();
+            return toSave.ToBurgerDto();
         }
-
-        public IList<BurgerViewModel> GetAllBurgers()
+        public IList<BurgerDto> GetAllBurgers()
         {
-            return repository.GetAll().Select(x => x.ToBurgerViewModel()).ToList();
-        }
+            var burgers = repository.GetAll()
+                                    .Select(x => x.ToBurgerDto());
 
-        public BurgerViewModel GetBurger(int id)
+            return burgers.ToList();
+        }
+        public BurgerDto GetBurger(int id)
         {
             var burger = repository.GetById(id);
 
@@ -54,7 +52,7 @@ namespace BurgersApp.Application.Services.Implementation
             {
                 throw new Exception("Not found");
             }
-            return burger.ToBurgerViewModel();
+            return burger.ToBurgerDto();
         }
     }
 }

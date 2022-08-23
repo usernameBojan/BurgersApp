@@ -1,17 +1,14 @@
-﻿using BurgersApp.Application.ViewModel.Order;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BurgersApp.Application.Dto.Home;
+using BurgersApp.Application.Dto.Order;
 
 namespace BurgersApp.Application.Services
 {
     public interface IOrderService
     {
-        OrderViewModel CreateOrder(CreateOrderViewModel create);
-        OrderViewModel GetOrder(int id);
-        List<SelectBurger> GetOrderableBurgers();
-
+        OrderDto CreateOrder(CreateOrderDto create);
+        IList<OrderDto> GetOrders();
+        OrderDto GetOrder(int id);
+        StatisticsDto OrderStatistics();
+        List<SelectBurgerDto> GetOrderableBurgers();
     }
 }

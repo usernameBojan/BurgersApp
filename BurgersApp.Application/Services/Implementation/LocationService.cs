@@ -1,12 +1,7 @@
 ﻿using BurgersApp.Application.Mapper;
 using BurgersApp.Application.Repository;
-using BurgersApp.Application.ViewModel.Location;
+using BurgersApp.Application.Dto.Location;
 using BurgersApp.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BurgersApp.Application.Services.Implementation
 {
@@ -18,20 +13,18 @@ namespace BurgersApp.Application.Services.Implementation
         {
             this.repository = repository;
         }
-
-        public LocationViewModel CreateLocation(CreateLocationViewModel model)
+        public LocationDto CreateLocation(CreateLocationDto dto)
         {
-            var location = model.ToLocation();
+            var location = dto.ToLocation();
 
-            var newItem = repository.Create(location);
-            return newItem.ToLocationViewModel();
+            var created = repository.Create(location);
+            return created.ToLocationDto();
         }
-
         public void Delete(int id)
         {
             repository.Delete(id);
         }
-        public LocationViewModel EditLocation(LocationViewModel model, int id)
+        public LocationDto EditLocation(LocationDto model, int id)
         {
             var location = repository.GetById(id);
 
@@ -43,15 +36,16 @@ namespace BurgersApp.Application.Services.Implementation
 
             repository.Update(toSave);
 
-            return toSave.ToLocationViewModel();
+            return toSave.ToLocationDto();
         }
-
-        public IList<LocationViewModel> GetAllLocations()
+        public IList<LocationDto> GetAllLocations()
         {
-            return repository.GetAll().Select(x => x.ToLocationViewModel()).ToList();
-        }
+            var locations = repository.GetAll()
+                                      .Select(x => x.ToLocationDto());
 
-        public LocationViewModel GetLocation(int id)
+            return locations.ToList();
+        }
+        public LocationDto GetLocation(int id)
         {
             var location = repository.GetById(id);
 
@@ -59,7 +53,7 @@ namespace BurgersApp.Application.Services.Implementation
             {
                 throw new Exception("Not found");
             }
-            return location.ToLocationViewModel();
+            return location.ToLocationDto();
         }
     }
 }

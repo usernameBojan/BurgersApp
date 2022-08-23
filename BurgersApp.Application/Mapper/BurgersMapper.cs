@@ -1,13 +1,13 @@
-﻿using BurgersApp.Application.ViewModel.Burgers;
+﻿using BurgersApp.Application.Dto.Burgers;
 using BurgersApp.Domain.Models;
 
 namespace BurgersApp.Application.Mapper
 {
     public static class BurgersMapper
     {
-        public static BurgerViewModel ToBurgerViewModel(this Burger burger)
+        public static BurgerDto ToBurgerDto(this Burger burger)
         {
-            return new BurgerViewModel
+            return new BurgerDto
             {
                 Id = burger.Id,
                 Name = burger.Name,
@@ -20,17 +20,17 @@ namespace BurgersApp.Application.Mapper
                 HasFries = burger.HasFries
             };
         }
-        public static Burger ToBurger(this CreateBurgerViewModel create)
+        public static Burger ToBurger(this CreateBurgerDto create)
         {
             return new Burger(create.Name, create.Price, create.IsVegetarian, create.IsVegan, create.Ingredients, create.ImgSrc);    
         }
-
-        public static Burger Edit(this Burger burger, BurgerViewModel model)
+        public static Burger Edit(this Burger burger, BurgerDto model)
         {
             burger.Name = model.Name;
             burger.Price = model.Price;
             burger.Ingredients = model.Ingredients;
             burger.ImgSrc = model.ImgSrc;
+
             return burger;
         }
     }

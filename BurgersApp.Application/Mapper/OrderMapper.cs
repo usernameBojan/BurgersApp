@@ -1,43 +1,58 @@
-﻿using BurgersApp.Application.ViewModel.Burgers;
-using BurgersApp.Application.ViewModel.Order;
+﻿using BurgersApp.Application.Dto.Burgers;
+using BurgersApp.Application.Dto.Order;
 using BurgersApp.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BurgersApp.Application.Mapper
 {
     public static class OrderMapper
     {
-        public static Order ToOrder(this CreateOrderViewModel createOrder, Location location)
+        public static Order ToOrder(this CreateOrderDto createOrder, Location location)
         {
-            return new Order(createOrder.FirstName, createOrder.LastName, createOrder.Address, new List<Burger>(), location, false);
-        }
-
-        public static OrderViewModel ToOrderViewModel(this Order order)
-        {
-            return new OrderViewModel
+            return new Order(createOrder.FirstName, createOrder.LastName, createOrder.Address, createOrder.OrderDate, new List<Burger>(), location)
             {
+                TotalPrice = createOrder.Burgers.Where(b => b.IsSelected).Sum(x => x.BatchOrderBurgerPrice)
+            };
+        }
+        public static OrderDto ToOrderDto(this Order order)
+        {
+            return new OrderDto()
+            {
+                Id = order.Id,
                 FullName = order.FullName,
-                Address = order.Address,
-                Location = new LocationLookUp 
-                { 
+                Burgers = order.Burgers.Select(b => new SelectBurgerDto
+                {
+                    BurgerId = b.Id,
+                    IsSelected = false,
+                    BurgerName = b.Name,
+                    HasFries = false,
+                    Quantity = b.BurgerQuantityForOrder,
+                    BurgerPrice = b.Price,
+                }).ToList(),
+                Location = new LocationLookUp
+                {
                     Address = order.Location.Address,
                     Name = order.Location.Name,
                     Id = order.Location.Id
                 },
-                Burgers = order.Burgers.Select(b => new SelectBurger 
-                {
-                    BurgerId = b.Id,
-                    IsSelected = true,
-                    BurgerName = b.Name,
-                }
-                ).ToList(),
-                IsDelievered = order.IsDelievered,
+                Address = order.Address,
+                TotalPrice = order.TotalPrice,
+                OrderDate = order.OrderDate
             };
         }
-        
+        public static OrderDto ToOrderDto(this CreateOrderDto create)
+        {
+            return new OrderDto
+            {
+                Id = create.Id,
+                Burgers = create.Burgers,
+                Address = create.Address,
+                FullName = $"{create.FirstName} {create.LastName}",
+                Location = create.Location,
+                TotalPrice = create.Burgers.Where(b => b.IsSelected)
+                                           .Sum(x => x.BatchOrderBurgerPrice),
+                OrderDate = create.OrderDate,
+                Payment = new OrderPayment()
+            };
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using BurgersApp.Application.Services;
-using BurgersApp.Application.ViewModel.Burgers;
-using BurgersApp.Application.ViewModel.Home;
-using BurgersApp.Application.ViewModel.Location;
+using BurgersApp.Application.Dto.Burgers;
+using BurgersApp.Application.Dto.Home;
+using BurgersApp.Application.Dto.Location;
 using BurgersApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -12,12 +12,13 @@ namespace BurgersApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ILocationService locationService;
-        private readonly IBurgerService burgerService;
+        private readonly IOrderService orderService;
 
-        public HomeController(ILocationService locationService, IBurgerService burgerService, ILogger<HomeController> logger)
+
+        public HomeController(ILocationService locationService, IOrderService orderService, ILogger<HomeController> logger)
         {
             this.locationService = locationService;
-            this.burgerService = burgerService;
+            this.orderService = orderService;
             _logger = logger;
         }
 
@@ -26,17 +27,15 @@ namespace BurgersApp.Controllers
             var model = new HomeViewModel
             {
                 Location = locationService.GetAllLocations(),
-                BurgersTest = burgerService.GetAllBurgers()
+                Statistics = orderService.OrderStatistics()
             };
+
             return View(model);
-            //var locations = locationService.GetAllLocations();
-            //return View(model);
         }
         public IActionResult Privacy()
         {
             return View();
         }
-
         public IActionResult AboutUs()
         {
             return View();
@@ -49,7 +48,7 @@ namespace BurgersApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateLocation(CreateLocationViewModel model)
+        public IActionResult CreateLocation(CreateLocationDto model)
         {
             try
             {
@@ -68,8 +67,9 @@ namespace BurgersApp.Controllers
             var location = locationService.GetLocation(id);
             return View(location);
         }
+
         [HttpPost]
-        public IActionResult EditLocation(int id, LocationViewModel model)
+        public IActionResult EditLocation(int id, LocationDto model)
         {
             try
             {

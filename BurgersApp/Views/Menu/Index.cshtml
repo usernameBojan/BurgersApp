@@ -1,5 +1,5 @@
-﻿@using BurgersApp.Application.ViewModel.Burgers
-@model IEnumerable<BurgerViewModel>
+﻿@using BurgersApp.Application.Dto.Burgers
+@model IEnumerable<BurgerDto>
 @{
     ViewData["Title"] = "Menu";
 }
@@ -17,7 +17,7 @@
         <div class="burger-container">
              <div class="mb-3"> 
                 <h5 class="mb-3">@burger.Name</h5>
-                <p><em><strong>Category: @burger.Category ~ Price: @burger.Price</strong></em></p>
+                <p><em><b>Category: @burger.Category ~ Price: @burger.Price</b></em></p>
              </div>
              <hr>
              <div class="mb-3">
@@ -46,7 +46,7 @@
          <div class="burger-container">
              <div class="mb-3"> 
                 <h5 class="mb-3">@burger.Name</h5>
-                <p><em><strong>Category: @burger.Category ~ Price: @burger.Price</strong></em></p>
+                <p><em><b>Category: @burger.Category ~ Price: @burger.Price</b></em></p>
              </div>
              <hr>
              <div class="mb-3">
@@ -75,7 +75,7 @@
          <div class="burger-container">
              <div class="mb-3"> 
                 <h5 class="mb-3">@burger.Name</h5>
-                <p><em><strong>Category: @burger.Category ~ Price: @burger.Price</strong></em></p>
+                <p><em><b>Category: @burger.Category ~ Price: @burger.Price</b></em></p>
              </div>
              <hr>
              <div class="mb-3">
@@ -105,7 +105,7 @@
          <div class="burger-container">
              <div class="mb-3"> 
                 <h5 class="mb-3">@burger.Name</h5>
-                <p><em><strong>Category: @burger.Category ~ Price: @burger.Price</strong></em></p>
+                <p><em><b>Category: @burger.Category ~ Price: @burger.Price</b></em></p>
              </div>
              <hr>
              <div class="mb-3">
@@ -113,16 +113,13 @@
                 
                     <p>@burger.Ingredients</p>
              </div>
-             <div class="img-div">
-                 <img src=@burger.ImgSrc width="450" height="250"> 
-             </div>
+             <img src=@burger.ImgSrc width="450" height="250"> 
              <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
                  Edit
              </a>
              <a asp-controller="Menu" asp-action="Delete" asp-route-id="@burger.Id" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">
                  Delete
              </a>
-
          </div>
         }
     }

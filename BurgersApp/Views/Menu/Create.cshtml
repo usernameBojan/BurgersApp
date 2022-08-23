@@ -1,6 +1,6 @@
-﻿@using BurgersApp.Application.ViewModel.Burgers
+﻿@using BurgersApp.Application.Dto.Burgers
 
-@model CreateBurgerViewModel
+@model CreateBurgerDto
 
 <form asp-controller="Menu" asp-action="Create" method="post">
     <div class="mb-3"> 
@@ -18,8 +18,26 @@
        <textarea asp-for="Ingredients" rows="5" cols="30" class="form-control">
        </textarea>
     </div>
+
+    <div class="mb-3">
+       <label class="form-label" asp-for=ImgSrc>Image url</label>
+       <textarea asp-for="ImgSrc" rows="2" cols="100" class="form-control">
+       </textarea>
+    </div>
+
+    <div>
+        <label asp-for="IsVegetarian">
+            Vegetarian:
+        </label>
+        <input type="checkbox" asp-for="IsVegetarian"/>
+        <br />
+        <label asp-for="IsVegan">
+            Vegan:
+        </label>
+        <input type="checkbox" asp-for="IsVegan"/>
+    </div>
                       
     <div class="mb-3">
-        <button type="submit" class="btn btn-secondary">Submit</button>
+        <button type="submit" class="btn btn-lg bg-primary">Submit</button>
     </div>
 </form>

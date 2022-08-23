@@ -1,0 +1,60 @@
+﻿@using BurgersApp.Application.Dto.Order
+@model OrderDto;
+
+<div>
+    <h6>Order details:</h6>
+
+    <div>
+        <p>Name: @Model.FullName</p>
+        <p>Address: @Model.Address</p>
+        <p>Store Location: @Model.Location.Name, @Model.Location.Address</p>
+        @foreach(var burger in Model.Burgers)
+        {
+            @if (burger.IsSelected)
+            {
+                <div>
+                    <p>@burger.BurgerName, <i>price: @burger.BurgerPrice, quantity: @burger.Quantity, </i></p>
+                    @if(burger.HasFries){<p>Fries,  (+40)</p>}
+                    <p>Full price: @burger.BatchOrderBurgerPrice</p>
+                </div>
+            }
+        }
+        <p><b>Order total price: @Model.TotalPrice</b></p>
+
+        <button class="btn bg-success confirm-order">Confirm</button>
+        <a asp-controller="Order" asp-action="Index" class="btn btn-danger active" role="button" aria-pressed="true">Clear and go back</a>
+    </div>
+
+    <div class="payment hidden">
+        <label asp-for="Payment.CardHolderName">Card Holder Name</label>
+        <input asp-for="Payment.CardHolderName" class="form-control" required="required" />
+
+        <label asp-for="Payment.CreditCardNumber">Credit Card Number</label>
+        <input asp-for="Payment.CreditCardNumber" class="form-control" required="required" />
+
+        <label asp-for="Payment.CVV2CVC2Code"></label>
+        <input asp-for="Payment.CVV2CVC2Code" class="form-control" required="required" />
+
+        <label asp-for="Payment.CardExpirationDate">Card Expiration Date</label>
+        <select asp-for="Payment.CardExpirationDate" required="required">
+            @for(int i = 1; i<=12; i++)
+            {
+               <option>@i</option>
+            }
+        </select>
+        <select asp-for="Payment.CardExpirationDate" required="required">
+            @for(int j=DateTime.Now.Year; j<=DateTime.Now.Year+8; j++)
+            {
+                <option>@j</option>
+            }
+        </select>
+        <br>
+        <label>Order amount</label>
+        <input value="@Model.TotalPrice" readonly class="form-control"/>
+        <br/>
+
+        <a asp-controller="Order" asp-action="ServedOrders" class="btn btn-primary active" role="button" aria-pressed="true">Create order and pay</a>
+    </div>
+</div>
+
+<script src=~/js/confirm-order.js></script>

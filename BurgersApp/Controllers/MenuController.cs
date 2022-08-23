@@ -1,5 +1,5 @@
 ﻿using BurgersApp.Application.Services;
-using BurgersApp.Application.ViewModel.Burgers;
+using BurgersApp.Application.Dto.Burgers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BurgersApp.Controllers
@@ -12,7 +12,6 @@ namespace BurgersApp.Controllers
         {
           this.burgerService = burgerService;
         }
-
         public IActionResult Index()
         {
             var burgers = burgerService.GetAllBurgers();
@@ -26,7 +25,7 @@ namespace BurgersApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreateBurgerViewModel model)
+        public IActionResult Create(CreateBurgerDto model)
         {
             try
             {
@@ -36,6 +35,7 @@ namespace BurgersApp.Controllers
             {
                 return View();
             }
+
             return RedirectToAction("Index");
         }
 
@@ -45,8 +45,9 @@ namespace BurgersApp.Controllers
             var burger = burgerService.GetBurger(id);
             return View(burger);
         }
+
         [HttpPost]
-        public IActionResult Edit(int id, BurgerViewModel model)
+        public IActionResult Edit(int id, BurgerDto model)
         {
             try
             {
@@ -56,6 +57,7 @@ namespace BurgersApp.Controllers
             {
                 return View();
             }
+
             return RedirectToAction("Index");
         }
 

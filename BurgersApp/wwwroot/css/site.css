@@ -9,8 +9,9 @@ html {
     position: relative;
     min-height: 100%;
 }
+
 nav {
-    background-color: whitesmoke;
+    background-color: #f7f7f7;  
 }
 
 header {
@@ -18,22 +19,59 @@ header {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    background-color: whitesmoke;
+    background-color: #f7f7f7;
 }
 
 header li {
     padding: 1px;
     margin: 1px 25px;
-    border-radius: 12.5px;
-    border: 1px solid grey;
-    background-color: whitesmoke;
+    border: 1px solid f7f7f7;
+    background-color: #f7f7f7;
 }
 
 body {
     margin-bottom: 60px;
-    background-color: bisque;
+    background-color: #292b2c;
+    color: #f0ad4e;
 }
 
+.select-burgers-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.select-burgers {
+    width: 25%;
+    background-color: whitesmoke;
+    color:#292b2c;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.order-log-container {
+    background-color: whitesmoke;
+    color: #292b2c;
+    width: 50%;
+    border-radius: 5px;
+}
+
+.order-log-container div {
+    background-color:aliceblue;
+    width: 50%;
+    margin: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.payment {
+    border: 2px solid whitesmoke;
+    padding: 5px;
+    margin-top: 75px;
+}
 footer {
     background-color: whitesmoke;
     position: fixed;
@@ -44,8 +82,18 @@ footer a {
     padding-left: 500px;
 }
 
+p strong {
+    color: #0275d8
+}
+
+.main-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
 .home-sections {
     background-color: whitesmoke;
+    color:#292b2c;
     border: 1px solid grey;
     border-radius: 12.5px;
     display: flex;
@@ -56,11 +104,17 @@ footer a {
 
 .statistics-section{
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     margin: 25px;
     padding: 50px;
+    width: 45%;
+}
+
+.locations{
+    width: 45%;
+    margin-top: 75px;
 }
 
 .statistics-section div {
-    width: 35%;
+    width: 100%;
 }

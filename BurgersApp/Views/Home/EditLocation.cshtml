@@ -1,27 +1,21 @@
-﻿@using BurgersApp.Application.ViewModel.Location
+﻿@using BurgersApp.Application.Dto.Location
 
-@model LocationViewModel
-
+@model LocationDto
 
 <form asp-controller="Home" asp-action="EditLocation" asp-route-id="@Model.Id" method="post">
-    <label asp-for="Name">
-    </label>
-    <input asp-for="Name" />
+    <label asp-for="Name"></label>
+    <input class="form-control" asp-for="Name" />
 
-    <label asp-for="Address">
-    </label>
-    <input asp-for="Address"/>
+    <label asp-for="Address"></label>
+    <input class="form-control" asp-for="Address"/>
 
-    <label asp-for="Opens">
-    </label>
-    <input asp-for="Opens"/>
+    <label asp-for="Opens"></label>
+    <input class="form-control" asp-for="Opens"/>
 
-    <label asp-for="Closes">
-    </label>
-    <input asp-for="Closes"/>
-    
+    <label asp-for="Closes"></label>
+    <input class="form-control" asp-for="Closes"/>
+    <br>
 
-    <button btn btn-lg-secondary>
-        Submit
-    </button>
+    <button type="submit" class="btn btn-lg bg-primary">Update</button>
+
 </form>
