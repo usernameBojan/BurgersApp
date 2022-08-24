@@ -3,7 +3,7 @@ using BurgersApp.Application.Services;
 using BurgersApp.Application.Services.Implementation;
 using BurgersApp.Domain.Models;
 using BurgersApp.Db.Repository;
-using BurgersApp.EntityFramework;
+using BurgersApp.Db;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,13 +12,14 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 // Add services to the container.
 //builder.Services.AddMvc().AddNewtonsoftJson();
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<IRepository<Burger>, BurgerRepository>();
-builder.Services.AddSingleton<IRepository<Location>, LocationRepository>();
-builder.Services.AddSingleton<IRepository<Order>, OrderRepository>();
-builder.Services.AddSingleton<ILocationService, LocationService>();
-builder.Services.AddSingleton<IBurgerService, BurgerService>();
-builder.Services.AddSingleton<IOrderService, OrderService>();
-builder.Services.AddDbContext<ApplicationDbContext>(opts => 
+builder.Services.AddScoped<IRepository<Burger>, BaseRepository<Burger>>();
+builder.Services.AddScoped<IRepository<Location>, BaseRepository<Location>>();
+//builder.Services.AddScoped<IRepository<Order>, BaseRepository<Order>>();
+builder.Services.AddScoped<IRepository<Order>, OrderRepository>();
+builder.Services.AddScoped<ILocationService, LocationService>();
+builder.Services.AddScoped<IBurgerService, BurgerService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddDbContext<ApplicationDbContext>(opts =>
     opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 var app = builder.Build();
 

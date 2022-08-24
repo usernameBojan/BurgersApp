@@ -1,6 +1,5 @@
 ﻿using BurgersApp.Application.Dto.Burgers;
 
-
 namespace BurgersApp.Application.Services
 {
     public interface IBurgerService

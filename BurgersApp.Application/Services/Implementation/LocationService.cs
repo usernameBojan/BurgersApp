@@ -22,9 +22,14 @@ namespace BurgersApp.Application.Services.Implementation
         }
         public void Delete(int id)
         {
-            repository.Delete(id);
+            var location = repository.GetById(id);
+            if (location == null)
+            {
+                throw new Exception("No such location");
+            }
+            repository.Delete(location);
         }
-        public LocationDto EditLocation(LocationDto model, int id)
+        public LocationDto EditLocation(LocationDto dto, int id)
         {
             var location = repository.GetById(id);
 
@@ -32,11 +37,11 @@ namespace BurgersApp.Application.Services.Implementation
             {
                 throw new Exception("No such location");
             }
-            var toSave = location.Edit(model);
+            var updated = location.Edit(dto);
 
-            repository.Update(toSave);
+            repository.Update(updated);
 
-            return toSave.ToLocationDto();
+            return updated.ToLocationDto();
         }
         public IList<LocationDto> GetAllLocations()
         {

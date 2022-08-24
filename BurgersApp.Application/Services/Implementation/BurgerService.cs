@@ -21,9 +21,15 @@ namespace BurgersApp.Application.Services.Implementation
         }
         public void Delete(int id)
         {
-            repository.Delete(id);
+            var burger = repository.GetById(id);
+            if (burger == null)
+            {
+                throw new Exception("Burger not found");
+            }
+
+            repository.Delete(burger);
         }
-        public BurgerDto EditBurger(BurgerDto model, int id)
+        public BurgerDto EditBurger(BurgerDto dto, int id)
         {
             var burger = repository.GetById(id);
 
@@ -31,11 +37,11 @@ namespace BurgersApp.Application.Services.Implementation
             {
                 throw new Exception("Burger not found");
             }
-            var toSave = burger.Edit(model);
+            var updated = burger.Edit(dto);
 
-            repository.Update(toSave);
+            repository.Update(updated);
 
-            return toSave.ToBurgerDto();
+            return updated.ToBurgerDto();
         }
         public IList<BurgerDto> GetAllBurgers()
         {

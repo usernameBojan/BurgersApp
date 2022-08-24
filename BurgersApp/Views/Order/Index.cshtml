@@ -20,15 +20,6 @@
         <input asp-for="Form.Address" type="text" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1" required="required"/>
     </div>
     <br/>
-
-    @* <label asp-for="Form.FirstName">Name</label>
-    <input asp-for="Form.FirstName" class="form-control"/>
-
-    <label asp-for="Form.LastName">Surname</label>
-    <input asp-for="Form.LastName" class="form-control"/> *@
-
-    @* <label asp-for="Form.Address"></label>
-    <input asp-for="Form.Address" class="form-control"/> *@
     
     <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -36,9 +27,6 @@
         </div>
         <select asp-for="Form.LocationId" asp-items="Model.Location" class="custom-select" id="inputGroupSelect01"></select>
     </div>
-    @* <label asp-for="Form.LocationId">Location</label>
-
-    <select asp-for="Form.LocationId" asp-items="Model.Location"></select> *@
     <br />
 
     <div class="select-burgers-container">
@@ -75,12 +63,3 @@
 
     <button type="submit" class="btn btn-lg bg-primary">Submit</button>
 </form>
-@*<p>Would you like a single order or batch order?</p>
-
-<a asp-controller="Menu" asp-action="Index" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
-                    Single order
-</a>
-
-<a asp-controller="Order" asp-action="CreateOrder" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
-                    Batch order
-</a>*@

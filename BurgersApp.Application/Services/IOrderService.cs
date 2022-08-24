@@ -9,6 +9,6 @@ namespace BurgersApp.Application.Services
         IList<OrderDto> GetOrders();
         OrderDto GetOrder(int id);
         StatisticsDto OrderStatistics();
-        List<SelectBurgerDto> GetOrderableBurgers();
+        IList<SelectBurgerDto> GetOrderableBurgers();
     }
 }

@@ -18,7 +18,8 @@ namespace BurgersApp.Application.Mapper
             return new OrderDto()
             {
                 Id = order.Id,
-                FullName = order.FullName,
+                FirstName = order.FirstName,
+                LastName = order.LastName,
                 Burgers = order.Burgers.Select(b => new SelectBurgerDto
                 {
                     BurgerId = b.Id,
@@ -36,7 +37,7 @@ namespace BurgersApp.Application.Mapper
                 },
                 Address = order.Address,
                 TotalPrice = order.TotalPrice,
-                OrderDate = order.OrderDate
+                OrderDate = order.OrderDate,
             };
         }
         public static OrderDto ToOrderDto(this CreateOrderDto create)
@@ -46,7 +47,8 @@ namespace BurgersApp.Application.Mapper
                 Id = create.Id,
                 Burgers = create.Burgers,
                 Address = create.Address,
-                FullName = $"{create.FirstName} {create.LastName}",
+                FirstName = create.FirstName,
+                LastName = create.LastName,
                 Location = create.Location,
                 TotalPrice = create.Burgers.Where(b => b.IsSelected)
                                            .Sum(x => x.BatchOrderBurgerPrice),

@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BurgersApp.Db", "BurgersApp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BurgersApp.Application", "BurgersApp.Application\BurgersApp.Application.csproj", "{CF611805-48F9-4268-9151-FE1CC4C4E92C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurgersApp.EntityFramework", "BurgersApp.EntityFramework\BurgersApp.EntityFramework.csproj", "{F000CC01-0D53-45BD-B4CB-1EAB995D3A58}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{CF611805-48F9-4268-9151-FE1CC4C4E92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF611805-48F9-4268-9151-FE1CC4C4E92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF611805-48F9-4268-9151-FE1CC4C4E92C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F000CC01-0D53-45BD-B4CB-1EAB995D3A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F000CC01-0D53-45BD-B4CB-1EAB995D3A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F000CC01-0D53-45BD-B4CB-1EAB995D3A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F000CC01-0D53-45BD-B4CB-1EAB995D3A58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

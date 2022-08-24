@@ -1,9 +1,4 @@
 ﻿using BurgersApp.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BurgersApp.Domain.Models
 {
@@ -26,7 +21,7 @@ namespace BurgersApp.Domain.Models
                 : ((isVegan) || (isVegetarian)) ? Category = Categories.Vegetarian
                 : Category = Categories.Regular;
         }
-        public Burger(int id, string name, int price, bool isVegetarian, bool isVegan, bool hasFries, string ingredients, string img)
+        public Burger(int id, string name, int price, bool isVegetarian, bool isVegan, string ingredients, string img)
         {
             Id = id;
             Name = name;
@@ -35,7 +30,6 @@ namespace BurgersApp.Domain.Models
             Price = price;
             IsVegetarian = isVegetarian;
             IsVegan = isVegan;
-            HasFries = hasFries;
 
             _ = (isVegan) ? Category = Categories.Vegan
                 : ((isVegan) || (isVegetarian)) ? Category = Categories.Vegetarian

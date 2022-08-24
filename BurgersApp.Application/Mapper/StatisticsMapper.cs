@@ -1,10 +1,5 @@
 ﻿using BurgersApp.Application.Dto.Home;
 using BurgersApp.Application.Dto.Order;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BurgersApp.Application.Mapper
 {
@@ -17,7 +12,7 @@ namespace BurgersApp.Application.Mapper
             return new StatisticsDto
             {
                 OrdersServed = orders.Count,
-                AverageOrderPrice = orders.Count == 0? 0 
+                AverageOrderPrice = orders.Count == 0 ? 0
                                     : orders.Select(x => x.TotalPrice).Sum() / orders.Count,
 
                 BurgerBestSellerId = orders.Count == 0 ? 0

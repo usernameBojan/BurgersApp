@@ -5,7 +5,7 @@
     <h6>Order details:</h6>
 
     <div>
-        <p>Name: @Model.FullName</p>
+        <p>Name: @Model.FirstName @Model.LastName</p>
         <p>Address: @Model.Address</p>
         <p>Store Location: @Model.Location.Name, @Model.Location.Address</p>
         @foreach(var burger in Model.Burgers)

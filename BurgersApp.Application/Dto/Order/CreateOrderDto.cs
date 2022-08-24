@@ -12,6 +12,7 @@ namespace BurgersApp.Application.Dto.Order
         [Required]
         public string Address { get; set; } = string.Empty;
         public int TotalPrice { get; set; }
+
         public DateTime OrderDate = DateTime.Now;
         public IList<SelectBurgerDto> Burgers { get; set; } = new List<SelectBurgerDto>();
         public LocationLookUp? Location { get; set; }

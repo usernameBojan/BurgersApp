@@ -6,9 +6,8 @@ namespace BurgersApp.Application.Repository
     {
         T? GetById(int id);
         IQueryable<T> GetAll();
-        void Update(T entity);
-        void Delete(int id);
+        T Update(T entity);
+        T Delete(T entity);
         T Create(T entity);
-        void DeleteAll();
     }
 }

@@ -1,5 +1,4 @@
-﻿using BurgersApp.Application.Dto.Home;
-using BurgersApp.Application.Dto.Location;
+﻿using BurgersApp.Application.Dto.Location;
 
 namespace BurgersApp.Application.Services
 {

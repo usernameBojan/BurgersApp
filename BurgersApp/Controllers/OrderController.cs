@@ -1,6 +1,5 @@
 ﻿using BurgersApp.Application.Services;
 using BurgersApp.Application.Dto.Order;
-using BurgersApp.Db;
 using BurgersApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;

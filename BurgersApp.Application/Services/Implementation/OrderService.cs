@@ -58,7 +58,7 @@ namespace BurgersApp.Application.Services.Implementation
 
             return create.ToOrderDto();
         }
-        public List<SelectBurgerDto> GetOrderableBurgers()
+        public IList<SelectBurgerDto> GetOrderableBurgers()
         {
             return burgerRepository.GetAll().Select(x => new SelectBurgerDto
             {
@@ -68,8 +68,7 @@ namespace BurgersApp.Application.Services.Implementation
                 HasFries = false,
                 Quantity = 0,
                 BurgerPrice = x.Price,
-            }
-            ).ToList();
+            }).ToList();
         }
         public StatisticsDto OrderStatistics()
         {

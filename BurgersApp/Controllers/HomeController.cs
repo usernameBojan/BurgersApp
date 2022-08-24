@@ -1,5 +1,4 @@
 ﻿using BurgersApp.Application.Services;
-using BurgersApp.Application.Dto.Burgers;
 using BurgersApp.Application.Dto.Home;
 using BurgersApp.Application.Dto.Location;
 using BurgersApp.Models;
