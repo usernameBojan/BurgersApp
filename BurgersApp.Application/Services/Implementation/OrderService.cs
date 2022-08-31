@@ -1,5 +1,6 @@
 ﻿using BurgersApp.Application.Mapper;
 using BurgersApp.Application.Repository;
+using Microsoft.EntityFrameworkCore;
 using BurgersApp.Application.Dto.Order;
 using BurgersApp.Domain.Models;
 using BurgersApp.Application.Dto.Home;
@@ -20,6 +21,7 @@ namespace BurgersApp.Application.Services.Implementation
         public OrderDto GetOrder(int id)
         {
             var order = orderRepository.GetById(id);
+            //var order = orderRepository.GetAll().Include(x => x.Burgers).FirstOrDefault(x => x.Id == id);
             if (order == null)
             {
                 throw new Exception("Not found");

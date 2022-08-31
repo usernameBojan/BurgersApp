@@ -20,6 +20,7 @@ namespace BurgersApp.Application.Mapper
                                         .OrderByDescending(grp => grp.Count())
                                         .Select(grp => grp.Key)
                                         .First()
+                                        //ОВА НЕ Е ТОЧНО
             };
         }
     }

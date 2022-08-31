@@ -14,8 +14,8 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IRepository<Burger>, BaseRepository<Burger>>();
 builder.Services.AddScoped<IRepository<Location>, BaseRepository<Location>>();
-//builder.Services.AddScoped<IRepository<Order>, BaseRepository<Order>>();
-builder.Services.AddScoped<IRepository<Order>, OrderRepository>();
+builder.Services.AddScoped<IRepository<Order>, BaseRepository<Order>>();
+//builder.Services.AddScoped<IRepository<Order>, OrderRepository>();
 builder.Services.AddScoped<ILocationService, LocationService>();
 builder.Services.AddScoped<IBurgerService, BurgerService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
