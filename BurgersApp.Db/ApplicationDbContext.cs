@@ -14,6 +14,7 @@ namespace BurgersApp.Db
         {
             modelBuilder.ApplyConfiguration(new BurgersTypeConfiguration());
             modelBuilder.ApplyConfiguration(new LocationsTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new OrdersTypeConfiguration());
         }
         public DbSet<Burger> Burgers { get; set; }
         public DbSet<Location> Locations { get; set; }

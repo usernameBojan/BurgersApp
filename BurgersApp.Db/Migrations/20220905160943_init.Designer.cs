@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BurgersApp.Db.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220824122701_seed_burgers")]
-    partial class seed_burgers
+    [Migration("20220905160943_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -232,6 +232,19 @@ namespace BurgersApp.Db.Migrations
                             IsVegetarian = true,
                             Name = "Vegan Cheeseburger",
                             Price = 150
+                        },
+                        new
+                        {
+                            Id = 13,
+                            BurgerQuantityForOrder = 0,
+                            Category = 0,
+                            HasFries = false,
+                            ImgSrc = "https://shivanilovesfood.com/wp-content/uploads/2019/08/Crispy-Tofu-Burgers-1.jpg",
+                            Ingredients = "test",
+                            IsVegan = false,
+                            IsVegetarian = false,
+                            Name = "forcrudtesting",
+                            Price = 9999
                         });
                 });
 
@@ -245,23 +258,77 @@ namespace BurgersApp.Db.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
 
                     b.Property<string>("ClosesAt")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
 
                     b.Property<string>("OpensAt")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Locations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Boulevard Ilirija 9999, Tetovo",
+                            ClosesAt = "23:00",
+                            Name = "PseudoBurgers Tetovo",
+                            OpensAt = "09:00"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Gjorche Petrov 9999, Gjorche Petrov, Skopje",
+                            ClosesAt = "22:00",
+                            Name = "PseudoBurgers Gjorche Petrov",
+                            OpensAt = "10:00"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Boulevard Partizanski Odredi 9999, Center, Skopje",
+                            ClosesAt = "00:00",
+                            Name = "PseudoBurgers Center",
+                            OpensAt = "08:00"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "Boulevard Jane Sandanski 9999, Aerodrom, Skopje",
+                            ClosesAt = "00:00",
+                            Name = "PseudoBurgers Aerodrom",
+                            OpensAt = "09:00"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "Boulevard Turistichka 9999, Ohrid",
+                            ClosesAt = "00:00",
+                            Name = "PseudoBurgers Ohrid",
+                            OpensAt = "08:00"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Address = "ForCRUDTesting",
+                            ClosesAt = "test",
+                            Name = "ForCRUDTesting",
+                            OpensAt = "test"
+                        });
                 });
 
             modelBuilder.Entity("BurgersApp.Domain.Models.Order", b =>
@@ -274,23 +341,33 @@ namespace BurgersApp.Db.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
+
+                    b.Property<string>("BurgersInOrder")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
 
                     b.Property<int?>("LocationId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("OrderDate")
+                        .HasMaxLength(128)
                         .HasColumnType("datetime2");
 
                     b.Property<int>("TotalPrice")
+                        .HasMaxLength(64)
                         .HasColumnType("int");
 
                     b.HasKey("Id");

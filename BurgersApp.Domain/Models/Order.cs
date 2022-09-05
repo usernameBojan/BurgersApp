@@ -27,9 +27,10 @@
         public string LastName { get; set; } = string.Empty;
         public string FullName => $"{FirstName} {LastName}";
         public string Address { get; set; } = string.Empty;
+        public string BurgersInOrder { get; set; } = string.Empty;
         public DateTime OrderDate { get; set; }
         public int TotalPrice { get; set; }
-        public ICollection<Burger>? Burgers { get; set; }
+        public ICollection<Burger> Burgers { get; set; } = new List<Burger>();
         public Location? Location { get; set; }
         public void ClearBurgers()
         {

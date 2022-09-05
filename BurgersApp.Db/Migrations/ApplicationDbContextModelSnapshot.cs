@@ -339,23 +339,33 @@ namespace BurgersApp.Db.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
+
+                    b.Property<string>("BurgersInOrder")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
 
                     b.Property<int?>("LocationId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("OrderDate")
+                        .HasMaxLength(128)
                         .HasColumnType("datetime2");
 
                     b.Property<int>("TotalPrice")
+                        .HasMaxLength(64)
                         .HasColumnType("int");
 
                     b.HasKey("Id");

@@ -7,6 +7,7 @@ namespace BurgersApp.Application.Services
     {
         OrderDto CreateOrder(CreateOrderDto create);
         IList<OrderDto> GetOrders();
+        //OrderDto Confirmed(CreateOrderDto create);
         OrderDto GetOrder(int id);
         StatisticsDto OrderStatistics();
         IList<SelectBurgerDto> GetOrderableBurgers();

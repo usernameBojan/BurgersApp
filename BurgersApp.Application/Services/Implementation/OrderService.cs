@@ -20,11 +20,19 @@ namespace BurgersApp.Application.Services.Implementation
         }
         public OrderDto GetOrder(int id)
         {
-            var order = orderRepository.GetById(id);
-            //var order = orderRepository.GetAll().Include(x => x.Burgers).FirstOrDefault(x => x.Id == id);
+            var order = orderRepository.GetAll()
+                                        .Include(x => x.Burgers)
+                                        .Include(x => x.Location)
+                                        .FirstOrDefault(x => x.Id == id);
+
             if (order == null)
             {
                 throw new Exception("Not found");
+            }
+
+            foreach(var burger in order.Burgers)
+            {
+                order.BurgersInOrder += $"{burger.Name}; ";
             }
 
             return order.ToOrderDto();
@@ -32,7 +40,10 @@ namespace BurgersApp.Application.Services.Implementation
         public IList<OrderDto> GetOrders()
         {
             var orders = orderRepository.GetAll()
+                                        .Include(x => x.Burgers)
+                                        .Include(x => x.Location)
                                         .Select(x => x.ToOrderDto());
+
             return orders.ToList();
         }
         public OrderDto CreateOrder(CreateOrderDto create)
@@ -55,11 +66,33 @@ namespace BurgersApp.Application.Services.Implementation
                     model.AddBurger(burgerModel, 1);
                 }
             }
-            
+
             orderRepository.Create(model);
 
             return create.ToOrderDto();
         }
+        //public void Confirmed(OrderDto create)
+        //{
+        //    //var location = locationRepository.GetById(create.LocationId);
+        //    //if (location == null)
+        //    //{
+        //    //    throw new Exception("Location not found");
+        //    //}
+        //    //create.Location = location.ToLocationLookUp();
+        //    var model = create.ToOrder();
+        //    foreach (var burger in create.Burgers.Where(x => x.IsSelected))
+        //    {
+        //        var burgerModel = burgerRepository.GetById(burger.BurgerId);
+        //        if (burgerModel != null)
+        //        {
+        //            burgerModel.BurgerQuantityForOrder = burger.Quantity;
+        //            model.AddBurger(burgerModel, 1);
+        //        }
+        //    }
+        //    orderRepository.Create(model);
+
+        //    return create.ToOrderDto();
+        //}
         public IList<SelectBurgerDto> GetOrderableBurgers()
         {
             return burgerRepository.GetAll().Select(x => new SelectBurgerDto
@@ -75,6 +108,8 @@ namespace BurgersApp.Application.Services.Implementation
         public StatisticsDto OrderStatistics()
         {
             var orders = orderRepository.GetAll()
+                                        .Include(x => x.Burgers)
+                                        .Include(x => x.Location)
                                         .Select(x => x.ToOrderDto())
                                         .ToList();
 

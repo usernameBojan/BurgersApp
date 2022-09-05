@@ -2,22 +2,11 @@
 @model OrderDto;
 
 <div class="order-log-container container">
-    <h6>Order details</h6>
-    <p>Order Id: @Model.Id</p>
-    <p>Customer name: @Model.FirstName @Model.LastName</p>
-    <p>Customer Address: @Model.Address</p>
-    <p>Order Price: @Model.TotalPrice</p>
-    <p>Store: @Model.Location.Name, @Model.Location.Address</p>
-    <br/>
-
-    <h6>Burgers:</h6>
-    
-    @foreach(var burger in Model.Burgers)
-    {
-        <div>
-            <p>Burger: @burger.BurgerName, Price: @burger.BurgerPrice</p>
-            <p>Quantity: @burger.Quantity</p>
-            <p>Full price: @burger.BatchOrderBurgerPrice</p>
-        </div>
-    }
+    <h3>Order details</h3>
+    <h5>Order Id: @Model.Id</h5>
+    <h5>Customer name: @Model.FirstName @Model.LastName</h5>
+    <h5>Customer Address: @Model.Address</h5>
+    <h5>Order Price: @Model.TotalPrice</h5>
+    <h5>Burgers: @Model.BurgersInOrder</h5>
+    <h5>Store: @Model.Location.Name, @Model.Location.Address</h5>
 </div>
