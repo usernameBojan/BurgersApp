@@ -4,10 +4,7 @@ namespace BurgersApp.Domain.Models
 {
     public class Burger : IEntity
     {
-        public Burger()
-        {
-
-        }
+        public Burger() { }
         public Burger(string name, int price, bool isVegetarian, bool isVegan, string ingredients, string img)
         {
             Name = name;

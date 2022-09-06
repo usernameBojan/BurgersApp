@@ -27,7 +27,12 @@
                     </ul>
                 </div>
             </div>
+            <div class="container col-2">
+                <a asp-controller="Home" asp-action="LogIn" class="btn btn-secondary active" role="button" aria-pressed="true">Log In</a>
+                <a asp-controller="Home" asp-action="SignUp" class="btn btn-secondary active" role="button" aria-pressed="true">Sign Up</a>
+            </div>
         </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -37,7 +42,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - PseudoBurgers  
+            &copy; 2022 - PseudoBurgers
             <a asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
             <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

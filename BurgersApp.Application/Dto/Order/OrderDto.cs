@@ -1,8 +1,4 @@
-﻿using BurgersApp.Application.Dto.Burgers;
-using BurgersApp.Application.Dto.Location;
-using BurgersApp.Domain;
-
-namespace BurgersApp.Application.Dto.Order
+﻿namespace BurgersApp.Application.Dto.Order
 {
     public class OrderDto
     {
@@ -11,7 +7,6 @@ namespace BurgersApp.Application.Dto.Order
         public string LastName { get; set; } = string.Empty;
         public string BurgersInOrder { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
-        public bool IsCancelled { get; set; }
         public DateTime OrderDate { get; set; }
         public LocationLookUp? Location { get; set; }
         public ICollection<SelectBurgerDto> Burgers { get; set; } = new List<SelectBurgerDto>();

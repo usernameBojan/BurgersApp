@@ -1,23 +1,21 @@
 ﻿namespace BurgersApp.Domain.Models
 {
-    public class Admin
+    public class Admin : IEntity
     {
         public Admin() { }
-        public Admin(string name, string surname, string username, string pw, string authCode)
+        public Admin(int id, string name, string surname, string username, string pw, string authCode)
         {
+            Id = id;
             FirstName = name;
             LastName = surname;
-            Password = username;
+            Username = username;
             Password = pw;
-            AuthorizationCode = authCode;
         }
         public int Id { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string Username { get; set; } = string.Empty;    
         public string FullName => $"{FirstName} {LastName}";
-        public string AdminCredentials => $"Admin{FirstName}";
         public string Password { get; set; } = string.Empty;
-        public string AuthorizationCode { get; set; } = string.Empty;
     }
 }

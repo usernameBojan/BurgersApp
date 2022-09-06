@@ -28,12 +28,6 @@
              <div class="img-div">
                  <img src=@burger.ImgSrc width="450" height="250"> 
              </div>
-             <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
-                 Edit
-             </a>
-             <a asp-controller="Menu" asp-action="Delete" asp-route-id="@burger.Id" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">
-                 Delete
-             </a>
         </div>
     }
 </div>
@@ -56,12 +50,6 @@
              <div class="img-div">
                  <img src=@burger.ImgSrc width="450" height="250"> 
              </div>
-             <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
-                 Edit
-             </a>
-             <a asp-controller="Menu" asp-action="Delete" asp-route-id="@burger.Id" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">
-                 Delete
-             </a>
          </div>
         }
     }
@@ -86,12 +74,6 @@
              <div class="img-div">
                  <img src=@burger.ImgSrc width="450" height="250"> 
              </div>
-             <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
-                 Edit
-             </a>
-             <a asp-controller="Menu" asp-action="Delete" asp-route-id="@burger.Id" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">
-                 Delete
-             </a>
          </div>
         }
     }
@@ -114,19 +96,9 @@
                     <p>@burger.Ingredients</p>
              </div>
              <img src=@burger.ImgSrc width="450" height="250"> 
-             <a asp-controller="Menu" asp-action="Edit" asp-route-id="@burger.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
-                 Edit
-             </a>
-             <a asp-controller="Menu" asp-action="Delete" asp-route-id="@burger.Id" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">
-                 Delete
-             </a>
          </div>
         }
     }
 </div>
-
-<a asp-controller="Menu" asp-action="Create" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">
-                    Create new burger
-</a>
 
 <script src=~/js/menu.js></script>

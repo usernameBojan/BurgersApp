@@ -2,7 +2,6 @@
 using BurgersApp.Application.Repository;
 using BurgersApp.Application.Dto.Burgers;
 using BurgersApp.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace BurgersApp.Application.Services.Implementation
 {

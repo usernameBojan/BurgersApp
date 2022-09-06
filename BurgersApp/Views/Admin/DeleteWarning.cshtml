@@ -4,8 +4,8 @@
 @{
     Layout = "_Layout";
 }
-<form asp-controller="Menu" asp-action="Delete" asp-route-id="@Model.Id" method="post">
+<form asp-controller="Admin" asp-action="DeleteBurger" asp-route-id="@Model.Id" method="post">
     Are you sure you want to delete this item?
     <button type="submit" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Confirm</button>
-    <a asp-controller="Menu" asp-action="Index" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Return</a>
+    <a asp-controller="Admin" asp-action="Index" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Return</a>
 </form>

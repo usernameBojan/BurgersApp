@@ -14,20 +14,17 @@
     <tbody>
         @foreach (var order in Model)
         {
-            if (order.IsCancelled)
-            {
-                <tr class="table-success">
-                    <td class="table-success">@order.Id</td>
-                    <td class="table-success">@order.TotalPrice</td>
-                    <td class="table-success">@order.OrderDate</td>
-                    <td class="table-success">@order.Location.Name</td>
-                    <td class="table-success">
-                        <a asp-controller="Order" asp-action="OrderLog" asp-route-id="@order.Id" class="btn btn-primary active" role="button" aria-pressed="true">
-                            View Order
-                        </a>
-                    </td>
-                </tr>
-            }
+            <tr class="table-success">
+                <td class="table-success">@order.Id</td>
+                <td class="table-success">@order.TotalPrice</td>
+                <td class="table-success">@order.OrderDate</td>
+                <td class="table-success">@order.Location.Name</td>
+                <td class="table-success">
+                    <a asp-controller="Order" asp-action="OrderLog" asp-route-id="@order.Id" class="btn btn-primary active" role="button" aria-pressed="true">
+                        View Order
+                    </a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

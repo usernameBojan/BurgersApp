@@ -17,15 +17,19 @@ nav {
 header {
     font-size: x-large;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column nowrap;
     justify-content: center;
     background-color: #f7f7f7;
+}
+
+header div {
+    margin-left: 550px;
 }
 
 header li {
     padding: 1px;
     margin: 1px 25px;
-    border: 1px solid f7f7f7;
+    border: 1px solid #f7f7f7;
     background-color: #f7f7f7;
 }
 
@@ -114,6 +118,11 @@ p strong {
 .locations{
     width: 45%;
     margin-top: 75px;
+}
+
+.locations div {
+    border: 1px solid grey;
+    border-radius: 5px;
 }
 
 .statistics-section div {

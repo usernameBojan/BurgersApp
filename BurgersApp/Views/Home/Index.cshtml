@@ -24,48 +24,39 @@
 
         <div class="home-sections best-seller mb-lg-5">
             <h5>Best selling burger</h5>
-            <hr/>
-            @if(Model.Statistics.BurgerBestSeller == null)
+            <hr />
+            @if (Model.Statistics.BurgerBestSeller == null)
             {
-            <p>No online orders served so far</p>
-            } 
-            else 
+                <p>No online orders served so far</p>
+            }
+            else
             {
-             <div class="mb-3"> 
-                <h5 class="mb-3">@Model.Statistics.BurgerBestSeller.Name</h5>
-                <p><em><b>Category: @Model.Statistics.BurgerBestSeller.Category ~ Price: @Model.Statistics.BurgerBestSeller.Price</b></em></p>
-             </div>
-             <hr/>
-             <div class="mb-3">
-                <p>Ingredients:</p>
-                <p>@Model.Statistics.BurgerBestSeller.Ingredients</p>
-             </div>
-             <div class="img-div">
-                 <img src=@Model.Statistics.BurgerBestSeller.ImgSrc width="450" height="250"> 
-             </div>
+                <div class="mb-3">
+                    <h5 class="mb-3">@Model.Statistics.BurgerBestSeller.Name</h5>
+                    <p><em><b>Category: @Model.Statistics.BurgerBestSeller.Category ~ Price: @Model.Statistics.BurgerBestSeller.Price</b></em></p>
+                </div>
+                <hr />
+                <div class="mb-3">
+                    <p>Ingredients:</p>
+                    <p>@Model.Statistics.BurgerBestSeller.Ingredients</p>
+                </div>
+                <div class="img-div">
+                    <img src=@Model.Statistics.BurgerBestSeller.ImgSrc width="450" height="250">
+                </div>
             }
         </div>
     </div>
 
     <div class="home-sections locations mb-lg-5">
         <h5 class="mb-4">Where can you find us?</h5>
-        @foreach(var location in Model.Location)
+        @foreach (var location in Model.Location)
         {
             <div class="container mb-3">
                 <p><b>@location.Name</b></p>
                 <p>Address: @location.Address</p>
                 <p><em>Working hours: @location.WorkingDaysAndHours</em></p>
+                <p>Phone: 011-235-813</p>
             </div>
-            <a asp-controller="Home" asp-action="EditLocation" asp-route-id="@location.Id" class="btn btn-secondary active" role="button" aria-pressed="true">
-                 Edit Location
-            </a>
-            <a asp-controller="Home" asp-action="DeleteLocation" asp-route-id="@location.Id" class="btn btn-danger active" role="button" aria-pressed="true">
-                 Delete Location
-            </a>
         }
-
-        <a asp-controller="Home" asp-action="CreateLocation" class="btn btn-outline-info btn-lg active" role="button" aria-pressed="true">
-                    Add new location
-        </a>
     </div>
 </div>

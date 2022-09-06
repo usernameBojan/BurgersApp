@@ -38,5 +38,4 @@ namespace BurgersApp.Db.EntityFramework.EntityTypeConfiguration
                 );
         }
     }
-
 }

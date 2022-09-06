@@ -3,9 +3,12 @@ using BurgersApp.Application.Dto.Order;
 using BurgersApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+using BurgersApp.Application;
 
 namespace BurgersApp.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly IOrderService orderService;
@@ -16,21 +19,19 @@ namespace BurgersApp.Controllers
             this.locationService = locationService;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Index()
         {
             var orderModel = new CreateOrderViewModel
             {
                 Form = new CreateOrderDto { Burgers = orderService.GetOrderableBurgers() },
-                Location = locationService.GetAllLocations().Select(x => new SelectListItem
-                {
-                    Text = x.Name,
-                    Value = x.Id.ToString()
-                }).ToList()
+                Location = locationService.GetAllLocations().Select(x => new SelectListItem(x.Name, x.Id.ToString())).ToList()
             };
             return View(orderModel);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult ConfirmOrder(CreateOrderViewModel order)
         {
@@ -41,12 +42,16 @@ namespace BurgersApp.Controllers
             var confirm = orderService.CreateOrder(order.Form);
             return View(confirm);
         }
+
+        [Authorize(Policy = SystemPolicies.MustHaveId)]
+        [HttpGet]
         public IActionResult ServedOrders()
         {
             var active = orderService.GetOrders();
             return View(active);
         }
 
+        [Authorize(Policy = SystemPolicies.MustHaveId)]
         [HttpGet("Order/OrderLog/{id}")]
         public IActionResult OrderLog(int id)
         {

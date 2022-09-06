@@ -31,8 +31,7 @@
     </div>
 
     <div class="cancel hidden">
-        <label asp-for="@Model.IsCancelled">Are you sure you want to cancel your order?</label>
-        <input type="checkbox" asp-for="@Model.IsCancelled" />
+        <label>Are you sure you want to cancel your order?</label>
         <a asp-controller="Order" asp-action="Index" class="btn btn-danger active" role="button">Confirm</a>
     </div>
 

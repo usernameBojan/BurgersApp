@@ -71,28 +71,6 @@ namespace BurgersApp.Application.Services.Implementation
 
             return create.ToOrderDto();
         }
-        //public void Confirmed(OrderDto create)
-        //{
-        //    //var location = locationRepository.GetById(create.LocationId);
-        //    //if (location == null)
-        //    //{
-        //    //    throw new Exception("Location not found");
-        //    //}
-        //    //create.Location = location.ToLocationLookUp();
-        //    var model = create.ToOrder();
-        //    foreach (var burger in create.Burgers.Where(x => x.IsSelected))
-        //    {
-        //        var burgerModel = burgerRepository.GetById(burger.BurgerId);
-        //        if (burgerModel != null)
-        //        {
-        //            burgerModel.BurgerQuantityForOrder = burger.Quantity;
-        //            model.AddBurger(burgerModel, 1);
-        //        }
-        //    }
-        //    orderRepository.Create(model);
-
-        //    return create.ToOrderDto();
-        //}
         public IList<SelectBurgerDto> GetOrderableBurgers()
         {
             return burgerRepository.GetAll().Select(x => new SelectBurgerDto

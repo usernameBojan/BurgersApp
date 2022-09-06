@@ -2,10 +2,7 @@
 {
     public class Location : IEntity
     {
-        public Location()
-        {
-
-        }
+        public Location() { }
         public Location(string name, string address, string opens, string closes)
         {
             Name = name;
@@ -24,7 +21,7 @@
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
-        public string WorkingDaysAndHours => $"Monday - Saturday \n {OpensAt} - {ClosesAt}";
+        public string WorkingDaysAndHours => $"Monday - Saturday {OpensAt} - {ClosesAt}";
         public string OpensAt { get; set; } = string.Empty;
         public string ClosesAt { get; set; } = string.Empty;
     }

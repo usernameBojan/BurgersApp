@@ -1,9 +1,11 @@
 ﻿using BurgersApp.Application.Services;
 using BurgersApp.Application.Dto.Home;
-using BurgersApp.Application.Dto.Location;
 using BurgersApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 namespace BurgersApp.Controllers
 {
@@ -12,15 +14,17 @@ namespace BurgersApp.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ILocationService locationService;
         private readonly IOrderService orderService;
+        private readonly IAdminService adminService;
 
-
-        public HomeController(ILocationService locationService, IOrderService orderService, ILogger<HomeController> logger)
+        public HomeController(ILocationService locationService, IOrderService orderService, IAdminService adminService, ILogger<HomeController> logger)
         {
             this.locationService = locationService;
             this.orderService = orderService;
+            this.adminService = adminService;
             _logger = logger;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             var model = new HomeViewModel
@@ -31,69 +35,70 @@ namespace BurgersApp.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
         public IActionResult Privacy()
         {
             return View();
         }
+
+        [HttpGet]
         public IActionResult AboutUs()
         {
             return View();
         }
 
         [HttpGet]
-        public IActionResult CreateLocation()
+        public IActionResult LogIn()
         {
+            bool checkClaim = int.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out int adminId);
+            if(!checkClaim)
+            {
+                return View();
+            }
+
+            var admin = adminService.GetAdmin(adminId);
+            if(admin != null)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult CreateLocation(CreateLocationDto model)
+        public async Task<IActionResult> LogIn(LoginDto loginDto)
         {
             try
             {
-                locationService.CreateLocation(model);
+                var admin = adminService.Login(loginDto);
+
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, admin.FirstName),
+                    new Claim(ClaimTypes.NameIdentifier, admin.Id.ToString()),
+                };
+
+                var identities = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                var principal = new ClaimsPrincipal(identities);
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                return RedirectToAction("Index", "Admin");
             }
-            catch
+            catch (Exception)
             {
-                return View();
+                return RedirectToAction("Login");
             }
-            return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public IActionResult EditLocation(int id)
+        public IActionResult SignUp()
         {
-            var location = locationService.GetLocation(id);
-            return View(location);
+            return View();
         }
-
-        [HttpPost]
-        public IActionResult EditLocation(int id, LocationDto model)
-        {
-            try
-            {
-                locationService.EditLocation(model, id);
-            }
-            catch
-            {
-                return View();
-            }
-            return RedirectToAction("Index");
-        }
-
-        [HttpGet("Home/DeleteLocation/{id}")]
-        public IActionResult DeleteLocationWarning(int id)
-        {
-            var location = locationService.GetLocation(id);
-            return View(location);
-        }
-
-        [HttpPost]
-        public IActionResult DeleteLocation(int id)
-        {
-            locationService.Delete(id);
-            return RedirectToAction("Index");
-        }
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

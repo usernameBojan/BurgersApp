@@ -2,7 +2,7 @@
 
 @model LocationDto
 
-<form asp-controller="Home" asp-action="EditLocation" asp-route-id="@Model.Id" method="post">
+<form asp-controller="Admin" asp-action="EditLocation" asp-route-id="@Model.Id" method="post">
     <label asp-for="Name"></label>
     <input class="form-control" asp-for="Name" />
 

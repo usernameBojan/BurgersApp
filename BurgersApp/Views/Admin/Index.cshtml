@@ -1,0 +1,91 @@
+﻿@model AdminViewModel;
+
+<div class="mb-lg-5">
+    <a asp-controller="Order" asp-action="ServedOrders" class="container btn btn-primary btn-lg active" role="button" aria-pressed="true">
+        Go to Orders log
+    </a>
+</div>
+
+<div class="mb-lg-5">
+    <h2>Manage locations:</h2>
+    <table class="table">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col" class="table-primary">Location Id</th>
+                <th scope="col" class="table-primary">Location name</th>
+                <th scope="col" class="table-primary">Location address</th>
+                <th scope="col" class="table-primary">Working days and hours</th>
+                <th scope="col" class="table-primary">Edit</th>
+                <th scope="col" class="table-primary">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var location in Model.Locations)
+            {
+                <tr class="table-success">
+                    <td class="table-success">@location.Id</td>
+                    <td class="table-success">@location.Name</td>
+                    <td class="table-success">@location.Address</td>
+                    <td class="table-success">@location.WorkingDaysAndHours</td>
+                    <td class="table-success">
+                        <a asp-controller="Admin" asp-action="EditLocation" asp-route-id="@location.Id" class="btn btn-secondary active" role="button" aria-pressed="true">
+                            Edit Location
+                        </a>
+                    </td>
+                    <td class="table-success">
+                        <a asp-controller="Admin" asp-action="DeleteLocation" asp-route-id="@location.Id" class="btn btn-danger active" role="button" aria-pressed="true">
+                            Delete Location
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-controller="Admin" asp-action="CreateLocation" class="container btn btn-info btn-lg active" role="button" aria-pressed="true">
+        Create new location
+    </a>
+</div>
+
+<div class="mb-lg-5">
+    <h2>Manage burgers:</h2>
+    <table class="table">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col" class="table-primary">Burger Id</th>
+                <th scope="col" class="table-primary">Burger name</th>
+                <th scope="col" class="table-primary">Burger price</th>
+                <th scope="col" class="table-primary">Burger ingredients</th>
+                <th scope="col" class="table-primary">Burger category</th>
+                <th scope="col" class="table-primary">Edit</th>
+                <th scope="col" class="table-primary">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var burger in Model.Burgers)
+            {
+                <tr class="table-success">
+                    <td class="table-success">@burger.Id</td>
+                    <td class="table-success">@burger.Name</td>
+                    <td class="table-success">@burger.Price</td>
+                    <td class="table-success">@burger.Ingredients</td>
+                    <td class="table-success">@burger.Category</td>
+                    <td class="table-success">
+                        <a asp-controller="Admin" asp-action="EditBurger" asp-route-id="@burger.Id" class="btn btn-primary active" role="button" aria-pressed="true">
+                            Edit Burger
+                        </a>
+                    </td>
+                    <td class="table-success">
+                        <a asp-controller="Admin" asp-action="DeleteBurger" asp-route-id="@burger.Id" class="btn btn-danger active" role="button" aria-pressed="true">
+                            Delete Burger
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-controller="Admin" asp-action="CreateBurger" class="container btn btn-info btn-lg active" role="button" aria-pressed="true">
+        Create new burger
+    </a>
+</div>
